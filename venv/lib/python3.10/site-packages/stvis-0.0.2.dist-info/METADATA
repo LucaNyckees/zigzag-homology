@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: stvis
+Version: 0.0.2
+Summary: Streamlit component for pyvis
+Home-page: 
+Author: Jose Manuel Napoles Duarte
+Author-email: jnapoles@uach.mx
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Python: >=3.6
+Description-Content-Type: text/plain
+License-File: LICENSE
+Requires-Dist: streamlit (>=0.63)
+
+Streamlit component for creating graphs with Pyvis
+

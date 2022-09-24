@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: got
+Version: 0.0.1
+Summary: a tiny async crawler
+Home-page: https://github.com/kilerd/got
+Author: Kilerd Chan
+Author-email: blove694@gmail.com
+License: BSD
+Download-URL: https://github.com/kilerd/got/tarball/0.0.1
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+
+# yes
+
+
+
+a simple data validation library
+
+## Installation / Usage
+
+To install use pip:
+```bash
+$ pip install yes
+```
+Or clone the repo:
+```bash
+$ git clone https://github.com/kilerd/yes.git
+$ python setup.py install
+````
+
+
