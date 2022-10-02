@@ -1,7 +1,7 @@
 
 # Computing Levelset Zigzag Homology
 
-This project is supervised by Kathryn Hess Bellwald, from the [Laboratory of Topology and Neuroscience at EPFL](https://www.epfl.ch/labs/hessbellwald-lab/).
+This is a project done by Luca Nyckees and Nicolas Berkouk, with the [Laboratory of Topology and Neuroscience at EPFL](https://www.epfl.ch/labs/hessbellwald-lab/).
 
 
 ## Table of Content
