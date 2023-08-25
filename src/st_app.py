@@ -1,7 +1,8 @@
 import streamlit as st
 import matplotlib
-from st_utils import *
-from bijection import *
+import matplotlib.pyplot as plt
+
+from st_utils import (description, interactive_barcodes, computing_barcodes, bijection_vis, github, contacts)
 
 plt.style.use('fivethirtyeight')
 matplotlib.rcParams.update({'font.size': 10})
@@ -11,7 +12,7 @@ st.markdown("<h1 style='text-align: center;'> Computing Levelset Zigzag Homology
             unsafe_allow_html=True)
 MODES = ['Choose your data', 'Fixed graphs', 'Barcode bijection']
 st.sidebar.header('Options')
-INFO = st.sidebar.radio("Content",('Project description', 'Interactive part'))
+INFO = st.sidebar.radio("Content", ('Project description', 'Interactive part'))
 
 if INFO == 'Project description':
     description()
@@ -20,14 +21,11 @@ elif INFO == 'Interactive part':
     if SELECTED_MODE == MODES[0]:
         interactive_barcodes()
     elif SELECTED_MODE == MODES[1]:
-         computing_barcodes()
-    elif SELECTED_MODE == MODES[2]: 
+        computing_barcodes()
+    elif SELECTED_MODE == MODES[2]:
         bijection_vis()
 
 if st.sidebar.button("GitHub"):
     github()
 if st.sidebar.button("Contacts"):
     contacts()
-    
-
-                
