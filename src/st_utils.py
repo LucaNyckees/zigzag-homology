@@ -8,7 +8,7 @@ import numpy as np
 import networkx as nx
 from bijection import *
 
-from helpers import cycle, complete, plot_extended_diagram_plotly, plot_levelset_diagram_plotly, threshold, graph_time_series
+from helpers import cycle, complete, plot_diagram_plotly, threshold, graph_time_series
 from visualization import plot_barcode_LZZ_plotly, plot_extended_barcode_plotly
 
 def interactive_function_EP(space, filtration):
@@ -76,8 +76,8 @@ def interactive_barcodes():
                                 x_title = 'Birth',
                                 y_title = "Death"
                 )
-            plot_extended_diagram_plotly(fig_, dgms, filt)
-            plot_levelset_diagram_plotly(fig_, dgms, filt)
+            plot_diagram_plotly(fig_, dgms, filt, class_='extended')
+            plot_diagram_plotly(fig_, dgms, filt, class_='levelset')
             fig_['layout'].update({
                 'width': 1000,
                 'height': 600,
@@ -142,8 +142,8 @@ def computing_barcodes():
                                 x_title = 'Birth',
                                 y_title = "Death"
                 )
-            plot_extended_diagram_plotly(fig_, dgms, filt)
-            plot_levelset_diagram_plotly(fig_, dgms, filt) 
+            plot_diagram_plotly(fig_, dgms, filt, class_='extended')
+            plot_diagram_plotly(fig_, dgms, filt, class_='levelset')
             fig_['layout'].update({
                 'width': 1000,
                 'height': 600,
