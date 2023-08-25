@@ -33,3 +33,5 @@ def EP_to_LZZ(dgms: list | tuple) -> list[tuple]:
 
     for i, t in enumerate(types):
         B += [(t, dim, interval_tranform(t, I)) for (dim, I) in dgms[i]]
+
+    return B
