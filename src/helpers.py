@@ -86,9 +86,9 @@ def plot_diagram_plotly(fig: go.Figure(), dgms: list, filt: list, class_: str) -
     """
     def get_col(i: int, class_: str) -> int:
         if class_ == 'extended':
-            return 1 + i % 2
+            return int(1 + i % 2)
         elif class_ == 'levelset':
-            return 3 + i % 2
+            return int(3 + i % 2)
         else:
             raise ValueError("Class attribute must be either 'extended' or 'levelset'.")
 
@@ -102,7 +102,7 @@ def plot_diagram_plotly(fig: go.Figure(), dgms: list, filt: list, class_: str) -
                        a=a,
                        b=b,
                        color=color,
-                       row=1 + np.floor(i / 2),
+                       row=int(1 + np.floor(i / 2)),
                        col=get_col(i, class_),
                        dim=dim,
                        interval=I)
