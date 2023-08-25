@@ -1,93 +1,35 @@
-
-import networkx as nx
 import gudhi as gd
-import numpy as np
-import matplotlib.pyplot as plt
-#from simplicial import *
-import streamlit as st
-import plotly.graph_objects as go
 
 
-def get_skel(K,p):
-    
+def get_skel(K: gd.SimplexTree(), p: int) -> list:
     """
-    Args: 
-        K : gudhi.SimplexTree(), a simplicial complex
-        p : int, a dimension
-    Returns: 
+    Args:
+        K : a simplicial complex
+        p : a dimension
+    Returns:
         skel_new : list, a list of all p-simplices of K
     """
-    
-    skel = list(K.get_skeleton(p))
-    skel_new = []
-    for simplex in skel:
-        if len(simplex[0]) == p+1:
-            skel_new.append(simplex)
-    return skel_new
+    return [s for s in list(K.get_skeleton(p)) if len(s[0]) == p + 1]
 
 
-    
-def EP_to_LZZ(filtration, dgms):
-    
-    """This function translates the extended persistence barcode output of a 
-    filtration on the simplicial complex X to its levelset zigzag barcode. 
-    
-    Args : 
-        filtration : basic filtration on X
-        dgms : output diagrams as returned by extended_persistence()
-    Returns : 
-        barcode_LZZ : corresponding levelset zigzag barcode
+def EP_to_LZZ(dgms: list | tuple) -> list[tuple]:
     """
-    
-    barcode_LZZ = []
-    
-    types = ["ORD","REL","EP+","EP-"]
-    
-    ORD = dgms[0]
-    REL = dgms[1]
-    EP = dgms[2]
-    EP_ = dgms[3]
-    
-    for (dim,I) in ORD:
-        
-        J = [I[0],I[1]]
-        
-        barcode_LZZ.append(("ORD",dim,J))
-        
-    for (dim,I) in REL:
-        
-        J = [I[1],I[0]]
-        
-        barcode_LZZ.append(("REL",dim,J))
-        
-    for (dim,I) in EP:
-        
-        J = [I[0],I[1]]
-        
-        barcode_LZZ.append(("EP+",dim,J))
-        
-    for (dim,I) in EP_:
-        
-        J = [I[0],I[1]]
-        
-        barcode_LZZ.append(("EP-",dim,J))
+    This function translates the extended persistence barcode to its levelset zigzag barcode equivalent.
 
+    Args :
+        dgms : extended persistence diagrams with types 'ordinary', 'relative', 'extended+' and 'extended-'.
+    Returns :
+        B : equivalent levelset zigzag barcode.
+    """
 
-    return barcode_LZZ
+    def interval_tranform(type: str, interval: tuple | list) -> list:
+        if type == 'REL':
+            return [interval[1], interval[0]]
+        else:
+            return [interval[0], interval[1]]
 
-  
-    
-    
+    B = []
+    types = ["ORD", "REL", "EP+", "EP-"]
 
-    
-    
-
-    
-    
-
-    
-
-
-
-
-
+    for i, t in enumerate(types):
+        B += [(t, dim, interval_tranform(t, I)) for (dim, I) in dgms[i]]
